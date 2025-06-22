@@ -1,66 +1,31 @@
-'use client';
+import { Suspense } from 'react';
 
-import { Settings, UsersIcon } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { GoCheckCircle, GoCheckCircleFill, GoHome, GoHomeFill } from 'react-icons/go';
+import { DottedSeparator } from './dotted-separator';
+import { Logo } from './logo';
+import { Navigation } from './navigation';
+import { Projects } from './projects';
+import { WorkspaceSwitcher } from './workspaces-switcher';
 
-// import { useWorkspaceId } from '@/features/workspaces/hooks/use-workspace-id';
-import { cn } from '@/lib/utils';
-
-const routes = [
-  {
-    label: 'Home',
-    href: '',
-    icon: GoHome,
-    activeIcon: GoHomeFill,
-  },
-  {
-    label: 'My Tasks',
-    href: '/tasks',
-    icon: GoCheckCircle,
-    activeIcon: GoCheckCircleFill,
-  },
-  {
-    label: 'Settings',
-    href: '/settings',
-    icon: Settings,
-    activeIcon: Settings,
-  },
-  {
-    label: 'Members',
-    href: '/members',
-    icon: UsersIcon,
-    activeIcon: UsersIcon,
-  },
-];
-
-export const Navigation = () => {
-  const pathname = usePathname();
-//   const workspaceId = useWorkspaceId();
-
+export const Sidebar = () => {
   return (
-    <ul className="flex flex-col">
-      {routes.map((route) => {
-        const fullHref = `/workspaces/${workspaceId}${route.href}`;
-        const isActive = pathname === fullHref;
-        const Icon = isActive ? route.activeIcon : route.icon;
+    <aside className="size-full bg-neutral-100 p-4">
+      <Logo />
 
-        return (
-          <li key={fullHref}>
-            <Link
-              href={fullHref}
-              className={cn(
-                'flex items-center gap-2.5 rounded-md p-2.5 font-medium text-neutral-500 transition hover:text-primary',
-                isActive && 'bg-white text-primary shadow-sm hover:opacity-100',
-              )}
-            >
-              <Icon className="size-5 text-neutral-500" />
-              {route.label}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+      <DottedSeparator className="my-4" />
+
+      <Suspense>
+        <WorkspaceSwitcher />
+      </Suspense>
+
+      <DottedSeparator className="my-4" />
+
+      <Navigation />
+
+      <DottedSeparator className="my-4" />
+
+      <Suspense>
+        <Projects />
+      </Suspense>
+    </aside>
   );
 };

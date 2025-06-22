@@ -1,11 +1,13 @@
 'use server';
 
-export const getCurrent = async () => {
-    try {
-        const { account } = await createSessionClient();
+import { createSessionClient } from '@/lib/appwrite';
 
-        return await account.get();
-    } catch {
-        return null;
-    }
-}
+export const getCurrent = async () => {
+  try {
+    const { account } = await createSessionClient();
+
+    return await account.get();
+  } catch {
+    return null;
+  }
+};

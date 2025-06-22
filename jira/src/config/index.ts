@@ -51,10 +51,10 @@ export const siteConfig: Metadata = {
   ] as Array<string>,
   authors: {
     name: 'Sanidhya Kumar Verma',
-    url: 'https://github.com/ARtoRiAs10',
+    url: 'https://github.com/sanidhyy',
   },
 } as const;
 
 export const links = {
-  sourceCode: 'https://github.com/ARtoRiAs10/jira-clone',
+  sourceCode: 'https://github.com/sanidhyy/jira-clone',
 } as const;
