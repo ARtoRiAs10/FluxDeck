@@ -50,11 +50,11 @@ export const siteConfig: Metadata = {
     'lucide-react',
   ] as Array<string>,
   authors: {
-    name: 'Sanidhya Kumar Verma',
-    url: 'https://github.com/sanidhyy',
+    name: 'Gaurav Kumar',
+    url: 'https://github.com/ARtoRiAs10',
   },
 } as const;
 
 export const links = {
-  sourceCode: 'https://github.com/sanidhyy/jira-clone',
+  sourceCode: 'https://github.com/ARtoRiAs10/jira-clone',
 } as const;
